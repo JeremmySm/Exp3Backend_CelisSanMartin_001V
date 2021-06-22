@@ -14,7 +14,7 @@ def index2(request):
         usuariomoroso=morosoForm(request.POST)
         if usuariomoroso.is_valid():
             usuariomoroso.save()         #metodo que crea un nuevo objeto, reemplaza al insert
-            return redirect('index4')
+            return redirect('index4 ')
     else: 
         usuariomoroso=morosoForm()
     return render(request, 'index2.html', {'usuariomoroso': usuariomoroso})   
@@ -38,5 +38,12 @@ def index5(request,id):
         if formulario.is_valid: 
             formulario.save()           #permite actualizar la info del objeto encontrado
             return redirect('index4')
+        else:
+            usuariomoroso=morosoForm()
+            return render(request,'index')
     return render(request, 'index5.html',datos)
-
+    
+def index6(request,id):
+    usuariomoroso = Usuariomoroso.objects.get(idmoroso=id)
+    usuariomoroso.delete()
+    return redirect('index4')
