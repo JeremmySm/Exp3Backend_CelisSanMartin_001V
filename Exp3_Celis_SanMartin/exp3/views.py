@@ -27,3 +27,16 @@ def index3(request):
 
     return render (request, 'index3.html')
 
+def index5(request,id):
+    usuariomoroso = Usuariomoroso.objects.get(idmoroso=id)
+    
+    datos = {
+        'form': morosoForm(instance=usuariomoroso)
+    }
+    if request.method == 'POST': 
+        formulario = morosoForm(data=request.POST, instance = usuariomoroso)
+        if formulario.is_valid: 
+            formulario.save()           #permite actualizar la info del objeto encontrado
+            return redirect('index4')
+    return render(request, 'index5.html',datos)
+
