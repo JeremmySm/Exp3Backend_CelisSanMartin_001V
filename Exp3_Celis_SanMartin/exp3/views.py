@@ -14,7 +14,7 @@ def index2(request):
         usuariomoroso=morosoForm(request.POST)
         if usuariomoroso.is_valid():
             usuariomoroso.save()         #metodo que crea un nuevo objeto, reemplaza al insert
-            return redirect('index4 ')
+            return redirect('index4')
     else: 
         usuariomoroso=morosoForm()
     return render(request, 'index2.html', {'usuariomoroso': usuariomoroso})   
